@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <title>Арнайы сандар курсы</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+    .section {
+      display: none;
+      padding: 50px;
+      text-align: center;
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-shadow: 1px 1px 3px black;
+    }
+    .active {
+      display: block;
+    }
+    h1 {
+      font-size: 48px;
+    }
+    h2 {
+      font-size: 42px;
+    }
+    p {
+      font-size: 28px;
+      max-width: 800px;
+      margin: 0 auto 30px auto;
+    }
+    .btn {
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #007bff; /* көк түс */
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 20px;
+  }
+
+    input[type="password"] {
+      padding: 14px;
+      font-size: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 15px;
+      width: 250px;
+      text-align: center;
+    }
+    iframe {
+      background: white;
+      border-radius: 8px;
+    }
+  </style>  
+</head>
+<body>
+
+<!-- Бөлім 1: Құпиясөз -->
+<div class="section active" id="password-section"
+     style="background-image: url('../Фон1.jpg');  background-color: #1a81e7;">
+  <h1>АРНАЙЫ САНДАР КУРСЫНА ҚОШ КЕЛДІҢІЗ!</h1>
+  <p>Жалғастыру үшін құпиясөз енгізіңіз:</p>
+  <input type="password" id="passwordInput" placeholder="Құпиясөз">
+  <br>
+  <button class="btn" onclick="checkPassword()">Кіру</button>
+  <p id="error" style="color: yellow;"></p>
+</div>
+
+<!-- Бөлім 2: Pre-тест -->
+<div class="section" id="pretest-section"
+    style="background-image: url('../Фон1.jpg');  background-color: #2784e2;">
+  <h2>1-БӨЛІМ: PRE-ТЕСТ</h2>
+  <p>АЛДЫМЕН АРНАЙЫ САНДАР ТУРАЛЫ БАСТАПҚЫ ТЕСТТЕН ӨТІҢІЗ</p>
+  <a href="https://forms.gle/8xg6f4t29B1bhQAK7" target="_blank">
+    <button class="btn">PRE-ТЕСТКЕ ӨТУ</button>
+  </a>
+  <br>
+  <button class="btn" onclick="goTo('presentation-section')">Келесі</button>
+</div>
+
+<!-- Бөлім 3: Презентация -->
+<div class="section" id="presentation-section"
+style="background-image: url('../Фон1.jpg');  background-color: #107ae4;">
+  <h2>2-БӨЛІМ: ПРЕЗЕНТАЦИЯ</h2>
+  <p>АРНАЙЫ САНДАР ЖАЙЛЫ ПРЕЗЕНТАЦИЯМЕН ТАНЫСЫҢЫЗ</p>
+  <a href="../През арнайы.pptx" target="_blank">
+    <button class="btn">Презентацияны көрсету</button>
+  </a>
+    
+  <br>
+  <button class="btn" onclick="goTo('posttest-section')">Келесі</button>
+</div>
+
+<!-- Бөлім 4: Post-тест -->
+<div class="section" id="posttest-section"
+  style="background-image: url('../Фон1.jpg');  background-color: #107ae4;">
+  <h2>3-БӨЛІМ: POST-ТЕСТ</h2>
+  <p>ПРЕЗЕНТАЦИЯМЕН ТАНЫСҚАН СОҢ, ҚОРЫТЫНДЫ ТЕСТТІ ОРЫНДАҢЫЗ</p>
+  <a href="https://forms.gle/rzPy7Udy9Cw3T1fu6" target="_blank">
+    <button class="btn">POST-ТЕСТКЕ ӨТУ</button>
+  </a>
+</div>
+
+<script>
+  function checkPassword() {
+    const input = document.getElementById("passwordInput").value;
+    if (input === "1234") {
+      goTo('pretest-section');
+    } else {
+      document.getElementById("error").textContent = "Қате құпиясөз!";
+    }
+  }
+
+  function goTo(sectionId) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(sec => sec.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+</script>
+
+</body>
+</html>
